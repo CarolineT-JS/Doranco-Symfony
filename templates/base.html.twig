@@ -62,10 +62,7 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="{{ path('home')}}">Home </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ path('logout')}}">Logout</a>
+              <a class="nav-link" href="{{ path('home')}}">Home </a>
             </li>
               <li class="nav-item">
                   <a class="nav-link" href="">Notre Equipe</a>
@@ -75,6 +72,9 @@
               </li>
               <li class="nav-item">
                   <a class="nav-link" href="">Contactez-nous</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="{{ path('logout')}}">Logout</a>
               </li>
           </ul>
         </div>
@@ -113,7 +113,7 @@
              var calendarEl = document.getElementById('calendar-holder');
 
              var calendar = new FullCalendar.Calendar(calendarEl, {
-                 defaultView: 'dayGridMonth',
+                 defaultView: 'dayGridMonth', //check la doc pour la trad
                  editable: true,
                  eventSources: [
                      {
@@ -133,8 +133,9 @@
                      right: 'dayGridMonth,timeGridWeek,timeGridDay',
                  },
                  plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
-                 timeZone: 'UTC',
+                 timeZone: 'fr',
              });
+                 calendar.setOption('locale', 'fr');
              calendar.render();
          });
      </script>

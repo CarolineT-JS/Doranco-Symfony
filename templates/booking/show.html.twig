@@ -40,10 +40,19 @@
                     <div class="collapse navbar-collapse" id="navbarColor01">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ path('home')}}">Home </a>
+                                <a class="nav-link" href="{{ path('home')}}">Home </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('logout')}}">Logout</a>
+                                <a class="nav-link" href="">Notre Equipe</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Notre Tarifs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Contactez-nous</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ path('logout')}}">Logout</a>
                             </li>
                         </ul>
                     </div>
@@ -85,7 +94,7 @@
         </tbody>
     </table>
 
-    <button class="btn btn-primary mr-3"><a href="{{ path('booking_index') }}" style="color: #FFFFFF;">Réserver un nouveau RDV</a></button>
+    <button class="btn btn-primary mr-3"><a href="{{ path('booking_index') }}" style="color: #FFFFFF;">Liste de mes RDV</a></button>
     <button class="btn btn-primary mr-3"><a href="{{ path('booking_edit', {'id': booking.id}) }}" style="color: #FFFFFF;">Modifier ce RDV</a></button>
 
     {{ include('booking/_delete_form.html.twig') }}

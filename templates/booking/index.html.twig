@@ -1,11 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Voir RDV{% endblock %}
+{% block title %}Liste de mes RDV{% endblock %}
 
 {% block body %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.1/minty/bootstrap.min.css" integrity="sha512-GfQOjDRPz8HF/pCR8ukJ66IqyOBk1Qy1hDzH24Lf5vueGwWZ0+XkbSAb5aMj7ktBBFMwEk/Fm10ycFzKBMSo3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../../public/Asset/styles.css" />
-    <link rel="stylesheet" href="../../public/Asset/bookingShow.css" />
+    <link rel="stylesheet" href="Asset/bookingShow.css" />
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -35,10 +34,20 @@
                     <div class="collapse navbar-collapse" id="navbarColor01">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ path('home')}}">Home </a>
+                                <a class="nav-link" href="{{ path('home')}}">Home </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Notre Equipe</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('logout')}}">Logout</a>
+                                <a class="nav-link" href="">Notre Tarifs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Contactez-nous</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ path('logout')}}">Logout</a>
                             </li>
                         </ul>
                     </div>
