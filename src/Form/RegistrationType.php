@@ -4,12 +4,15 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 class RegistrationType extends AbstractType
 {
@@ -33,7 +36,29 @@ class RegistrationType extends AbstractType
                 'attr' => ['placeholder' => 'Entrez votre mot de passe']
 
             ])
+            ->add('date_naissance', DateType::class, [
+                'label' => 'Date de naissance',
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd'
+            ])
+            ->add('secu_social', TextType::class, [
+                'label' => 'Secu Sociale',
+                'attr' => ['placeholder' => 'Entrez votre numero de secu sociale']
 
+            ])
+            ->add('numero_tel', TextType::class, [
+                'label' => 'Telephone',
+                'attr' => ['placeholder' => 'Entrez votre numero de téléphone']
+
+            ])
+            ->add('sexe',  ChoiceType::class, [
+                'choices'  => [
+                    'Choisir' => null,
+                    'Femme' => true,
+                    'Homme' => false,
+                    'Autre' => false,
+                ],
+            ])
 
             ->add('submit', SubmitType::class, [
                 'label' => 'Inscription',

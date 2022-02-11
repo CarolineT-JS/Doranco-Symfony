@@ -47,6 +47,43 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
      */
     private $firstname;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $numero_tel;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $secu_social;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Rdv::class, mappedBy="user")
+     */
+    private $rdvs;
+
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date_naissance;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $sexe;
+
+    /**
+     * @ORM\OneToOne(targetEntity=DossierMedical::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $dossier_medical;
+
+    public function __construct()
+    {
+        $this->rdvs = new ArrayCollection();
+    }
+
 
 
 
@@ -177,6 +214,108 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
     public function setFirstname(string $firstname): self
     {
         $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getNumeroTel(): ?string
+    {
+        return $this->numero_tel;
+    }
+
+    public function setNumeroTel(string $numero_tel): self
+    {
+        $this->numero_tel = $numero_tel;
+
+        return $this;
+    }
+
+    public function getSecuSocial(): ?string
+    {
+        return $this->secu_social;
+    }
+
+    public function setSecuSocial(string $secu_social): self
+    {
+        $this->secu_social = $secu_social;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Rdv[]
+     */
+    public function getRdvs(): Collection
+    {
+        return $this->rdvs;
+    }
+
+    public function addRdv(Rdv $rdv): self
+    {
+        if (!$this->rdvs->contains($rdv)) {
+            $this->rdvs[] = $rdv;
+            $rdv->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRdv(Rdv $rdv): self
+    {
+        if ($this->rdvs->removeElement($rdv)) {
+            // set the owning side to null (unless already changed)
+            if ($rdv->getUser() === $this) {
+                $rdv->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getUser(): ?DossierMedical
+    {
+        return $this->user;
+    }
+
+    public function setUser(?DossierMedical $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getDateNaissance(): ?\DateTimeInterface
+    {
+        return $this->date_naissance;
+    }
+
+    public function setDateNaissance(\DateTimeInterface $date_naissance): self
+    {
+        $this->date_naissance = $date_naissance;
+
+        return $this;
+    }
+
+    public function getSexe(): ?string
+    {
+        return $this->sexe;
+    }
+
+    public function setSexe(string $sexe): self
+    {
+        $this->sexe = $sexe;
+
+        return $this;
+    }
+
+    public function getDossierMedical(): ?DossierMedical
+    {
+        return $this->dossier_medical;
+    }
+
+    public function setDossierMedical(DossierMedical $dossier_medical): self
+    {
+        $this->dossier_medical = $dossier_medical;
 
         return $this;
     }

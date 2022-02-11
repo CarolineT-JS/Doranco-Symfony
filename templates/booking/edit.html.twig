@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier RDV{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.1/minty/bootstrap.min.css" integrity="sha512-GfQOjDRPz8HF/pCR8ukJ66IqyOBk1Qy1hDzH24Lf5vueGwWZ0+XkbSAb5aMj7ktBBFMwEk/Fm10ycFzKBMSo3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{{ path('home')}}"><img class="logo" src="/logo.png" alt="Logo"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                {% if app.user is empty %}
+
+                    <div class="collapse navbar-collapse" id="navbarColor01">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('register') }}">Inscription</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('login')}}">Login</a>
+                            </li>
+                        </ul>
+                    </div>
+                {% endif %}
+
+                {% if app.user %}
+
+
+                    <div class="collapse navbar-collapse" id="navbarColor01">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ path('home')}}">Home </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('logout')}}">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="row mb-3 mr-7" style="color: white; margin: 0 !IMPORTANT;">
+                        Bienvenue {{ app.user.firstname }}{{ app.user.lastname }}
+                    </div>
+                {% endif %}
+
+            </div>
+        </nav>
+
+    </header>
+
+
+
+    <div class="container">
+    <div class="row justify-content-center mt-5">
+        <h1>Modifier ou Annuler RDV</h1>
+    </div>
+        {{ include('booking/_form.html.twig', {'button_label': 'Modifier'}) }}
+        <br>
+        {{ include('booking/_delete_form.html.twig') }}
+    <button class="btn btn-warning mt-4 mb-3"><a href="{{ path('booking_index') }}" style="color: #999;">Voir ma liste de RDV</a></button>
+
+
+
+
+</div>
+{% endblock %}

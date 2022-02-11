@@ -4,9 +4,9 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationType;
-use App\Repository\UserRepository;
 use App\Security\LoginFormAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,7 +33,10 @@ class SecurityController extends AbstractController
         if (!empty($_POST)):
 
             return $authenticator->onAuthenticationSucces($this->getUser()->getRoles());
+            return $this->redirectToRoute("'home/home.html.twig'");
+
         endif;
+
 
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
@@ -44,6 +47,7 @@ class SecurityController extends AbstractController
 
     /**
      * @Route("/logout", name="logout")
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function logout(): void
     {

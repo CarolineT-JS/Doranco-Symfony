@@ -1,0 +1,9 @@
+body {
+    background-image: url("img/kineOld.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+img {
+     width: 150px;
+     margin-right: 20px;
+ }

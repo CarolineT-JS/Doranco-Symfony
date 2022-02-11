@@ -1,0 +1,14 @@
+{% block body %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.1/minty/bootstrap.min.css" integrity="sha512-GfQOjDRPz8HF/pCR8ukJ66IqyOBk1Qy1hDzH24Lf5vueGwWZ0+XkbSAb5aMj7ktBBFMwEk/Fm10ycFzKBMSo3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../../public/Asset/styles.css" />
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-success">{{ button_label|default('Réserver') }}</button>
+    {{ form_end(form) }}
+
+
+
+{% endblock %}
+
+

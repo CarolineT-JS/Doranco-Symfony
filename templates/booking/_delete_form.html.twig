@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier RDV{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.1/minty/bootstrap.min.css" integrity="sha512-GfQOjDRPz8HF/pCR8ukJ66IqyOBk1Qy1hDzH24Lf5vueGwWZ0+XkbSAb5aMj7ktBBFMwEk/Fm10ycFzKBMSo3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="Asset/styles.css" />
+
+            <form method="post" action="{{ path('booking_delete', {'id': booking.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir annuler ce RDV ?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ booking.id) }}">
+                <button class="btn btn-secondary">Annuler RDV</button>
+            </form>
+
+
+
+
+
+
+{% endblock %}
+
+
+

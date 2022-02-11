@@ -1,0 +1,20 @@
+img {
+  width: 150px;
+  margin-right: 20px;
+}
+body {
+  background-image: url("https://i.postimg.cc/rF88trKp/Kinesitherapeute.jpg") ;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+nav{
+  text-align: center;
+}
+
+a {color: #FFFFFF !important;}
+
+#calendar-holder{
+  width: 75% !important;
+  height: auto !important;
+}
